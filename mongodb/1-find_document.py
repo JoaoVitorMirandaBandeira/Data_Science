@@ -43,3 +43,20 @@ san_francisco = db.laureates.count_documents({
 })
 
 print(san_francisco)
+
+# 7 - Contando documentos que possuem uma informação
+
+qtd = db.laureates.count_documents({
+    'prizes.1': {
+        '$exists': True
+    }
+})
+print(qtd)
+
+no_coutry = db.laureates.count_documents({
+    'bornCountry': {
+        '$exists': False
+    }
+})
+
+print(f"Não possui pais de morte: {no_coutry}")
